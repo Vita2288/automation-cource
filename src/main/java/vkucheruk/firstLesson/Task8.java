@@ -2,13 +2,17 @@ package vkucheruk.firstLesson;
 
 public class Task8 {
     public static void main(String[] args) {
-        checkSeason(12);
-        checkSeason(4);
+        checkSeason(15);
+        checkSeason(8);
         checkSeason(7);
-        checkSeason(10);
+        checkSeason(9);
     }
 
     public static void checkSeason(int month) {
+        if (0 < month & month > 13) {
+            System.out.println("Wrong number of month: " + month);
+        }
+
         switch (month){
             case 1:
             case 2:
@@ -34,8 +38,6 @@ public class Task8 {
                 System.out.println("fall");
                 break;
 
-            default:
-                System.out.println("Wrong number of month: " + month);
         }
 
     }
