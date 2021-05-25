@@ -1,2 +1,4 @@
-package vkucheruk.secondLesson;public class ConfProperties {
+package vkucheruk.secondLesson;
+
+public class ConfProperties {
 }
