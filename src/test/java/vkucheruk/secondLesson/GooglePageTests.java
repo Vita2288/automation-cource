@@ -30,9 +30,10 @@ public class GooglePageTests {
             webDriver.get("https://www.google.com.ua");
 
 
-            webDriver.findElement(By.xpath("//body/div[1]/div[2]/div[1]/img[1]"));
-            webDriver.findElement(By.xpath("//body/div[1]/div[3]/form[1]/div[1]/div[1]/div[1]/div[1]/div[2]/input[1]")).sendKeys("maven selenium java");
-            webDriver.findElement(By.xpath("//body/div[1]/div[3]/form[1]/div[1]/div[1]/div[3]/center[1]/input[1]")).click();
+            webDriver.findElement(By.xpath("/.//*[text()='Google']"));
+            webDriver.findElement(By.xpath("//div[2]/input[1]")).sendKeys("maven selenium java");
+            webDriver.findElement(By.cssSelector(".gNO89b")).click();
+
 
             logger.info("Page was opened!");
             webDriver.quit();
