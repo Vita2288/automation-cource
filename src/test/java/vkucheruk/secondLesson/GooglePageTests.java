@@ -31,7 +31,7 @@ public class GooglePageTests {
 
 
             webDriver.findElement(By.xpath("/.//*[text()='Google']"));
-            webDriver.findElement(By.xpath("//div[2]/input[1]")).sendKeys("maven selenium java");
+            webDriver.findElement(By.cssSelector("[name=\"q\"]")).sendKeys("maven selenium java");
             webDriver.findElement(By.cssSelector(".gNO89b")).click();
 
 
