@@ -27,7 +27,7 @@ public class RegistrationTest {
 
 
         try {
-        //MAIN PAGE
+            //MAIN PAGE
             webDriver.get("http://automationpractice.com");
             logger.info("Open link - http://automationpractice.com");
         } catch (Exception e){
@@ -53,7 +53,7 @@ public class RegistrationTest {
         logger.info("Input first name - customer_firstname");
         webDriver.findElement(By.id("customer_lastname")).sendKeys("Kucheruk");
         logger.info("Input last name - customer_lastname");
-        webDriver.findElement(By.id("email")).getAttribute("vita10.kucheruk@gmail.com");
+        webDriver.findElement(By.id("email")).getAttribute("vita9.kucheruk@gmail.com");
         logger.info("Email is visible - vita211.kucheruk@gmail.com");
         webDriver.findElement(By.id("passwd")).sendKeys("kkll;mkl");
         logger.info("Input password - passwd");
