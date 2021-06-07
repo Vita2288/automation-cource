@@ -42,6 +42,5 @@ public class GooglePageTests {
             logger.warn("Something was wrong: ", e);
         }
 
-
     }
 }
