@@ -41,7 +41,7 @@ public class RegistrationTest {
         logger.info("Click on the Sign in button- //a[@class='login']");
 
         //SENDING EMAIL PAGE
-        webDriver.findElement(By.xpath("//input[@id='email_create']")).sendKeys("vita9.kucheruk@gmail.com");
+        webDriver.findElement(By.xpath("//input[@id='email_create']")).sendKeys("vita8.kucheruk@gmail.com");
         logger.info("Input e-mail - //input[@id='email_create']");
         webDriver.findElement(By.id("SubmitCreate")).click();
         logger.info("Click on the submit button - SubmitCreate");
@@ -53,7 +53,7 @@ public class RegistrationTest {
         logger.info("Input first name - customer_firstname");
         webDriver.findElement(By.id("customer_lastname")).sendKeys("Kucheruk");
         logger.info("Input last name - customer_lastname");
-        webDriver.findElement(By.id("email")).getAttribute("vita9.kucheruk@gmail.com");
+        webDriver.findElement(By.id("email")).getAttribute("vita8.kucheruk@gmail.com");
         logger.info("Email is visible - vita211.kucheruk@gmail.com");
         webDriver.findElement(By.id("passwd")).sendKeys("kkll;mkl");
         logger.info("Input password - passwd");
