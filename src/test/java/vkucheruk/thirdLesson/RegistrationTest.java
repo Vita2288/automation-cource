@@ -41,7 +41,7 @@ public class RegistrationTest {
         logger.info("Click on the Sign in button- //a[@class='login']");
 
         //SENDING EMAIL PAGE
-        webDriver.findElement(By.xpath("//input[@id='email_create']")).sendKeys("vita8.kucheruk@gmail.com");
+        webDriver.findElement(By.xpath("//input[@id='email_create']")).sendKeys("vita10.kucheruk@gmail.com");
         logger.info("Input e-mail - //input[@id='email_create']");
         webDriver.findElement(By.id("SubmitCreate")).click();
         logger.info("Click on the submit button - SubmitCreate");
@@ -53,14 +53,14 @@ public class RegistrationTest {
         logger.info("Input first name - customer_firstname");
         webDriver.findElement(By.id("customer_lastname")).sendKeys("Kucheruk");
         logger.info("Input last name - customer_lastname");
-        webDriver.findElement(By.id("email")).getAttribute("vita8.kucheruk@gmail.com");
+        webDriver.findElement(By.id("email")).getAttribute("vita9.kucheruk@gmail.com");
         logger.info("Email is visible - vita211.kucheruk@gmail.com");
         webDriver.findElement(By.id("passwd")).sendKeys("kkll;mkl");
         logger.info("Input password - passwd");
         webDriver.findElement(By.id("newsletter")).click();
         logger.info("Check checkbox 'Sign up for our newsletter!'- newsletter");
         webDriver.findElement(By.id("optin")).click();
-        logger.info("''Check checkbox 'Receive special offers from our partners!'- optin");
+        logger.info("Check checkbox 'Receive special offers from our partners!'- optin");
 
         //YOUR ADDRESS
         webDriver.findElement(By.xpath("//input[@id='firstname']")).getAttribute("Vita");
@@ -73,7 +73,7 @@ public class RegistrationTest {
         logger.info("Input city - city");
         webDriver.findElement(By.id("uniform-id_state")).click();
         logger.info("Check opening drop-down list - uniform-id_state");
-        // webDriver.findElement(By.xpath("//p[@class='required id_state select form-group']/div[@id='uniform-id_state']/[@checked]/span[@text='Alabama']")).click();
+      // webDriver.findElement(By.xpath("//p[@class='required id_state select form-group']/div[@id='uniform-id_state']/[@checked]/span[@text='Alabama']")).click();
         Select state = new Select(webDriver.findElement(By.id("id_state")));
         state.selectByVisibleText("Alabama");
         logger.info("Choose Alabama state - id_state (Alabama)");
