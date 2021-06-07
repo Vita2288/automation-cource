@@ -18,7 +18,7 @@ public class GooglePageTests {
         try {
             logger.info("Test starting...");
 
-            File fileChromeDriver = new File("C:\\chromedriver");
+            File fileChromeDriver = new File("C:\\chromedriver/chromedriver.exe");
             webDriver = new ChromeDriver();
             System.setProperty("webdriver.chrome.driver", fileChromeDriver.getAbsolutePath());
             logger.info("Driver was loaded");
@@ -41,7 +41,6 @@ public class GooglePageTests {
         } catch (Exception e) {
             logger.warn("Something was wrong: ", e);
         }
-
 
     }
 }

@@ -12,20 +12,16 @@ public class Task11 {
         String text = "The max is ";
         int a = Integer.parseInt(reader.readLine());
         int b = Integer.parseInt(reader.readLine());
-        if (a > max) {
-            max = a;
-        } if ( b > max) {
+
+
+        if (a < b){
             max = b;
-        } if (a < b){
-            max = b;
-        } if (a > b){
+        } else{
             max = a;
-        } if (a == max) {
-            max = a;
-        } if ( b == max) {
-            max = b;
         }
 
         System.out.println(text + max);
     }
 }
+
+// max = (a < b) ? b : a;
