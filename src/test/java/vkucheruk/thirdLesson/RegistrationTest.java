@@ -1,11 +1,15 @@
 package vkucheruk.thirdLesson;
 
 import org.apache.log4j.Logger;
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import pages.MainPage.MainPage;
+import pages.MainPage.RegistrationPage;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -15,13 +19,18 @@ public class RegistrationTest {
     public ChromeDriver webDriver;
     private final static Logger logger = Logger.getLogger(RegistrationTest.class);
 
-    @Test
-    public void testRegistrationValid(){
+    public RegistrationPage registrationPage;
+    public MainPage mainPage;
+
+    @Before
+    public void setUp() {
         File chromeFF;
         chromeFF = new File("C:\\chromedriver/chromedriver.exe");
         System.setProperty("webdriver.chrome.driver", ((File) chromeFF).getAbsolutePath());
 
         webDriver = new ChromeDriver();
+        registrationPage = new RegistrationPage (webDriver);
+        mainPage = new MainPage(webDriver);
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
@@ -30,12 +39,28 @@ public class RegistrationTest {
             //MAIN PAGE
             webDriver.get("http://automationpractice.com");
             logger.info("Open link - http://automationpractice.com");
-        } catch (Exception e){
+        } catch (Exception e) {
             logger.error("Can`t open browser");
             Assert.fail("Can`t open browser");
         }
+    }
 
+    @After
+        public void tearDown () {
+            webDriver.quit();
+            logger.info("Close chromedriver");
+        }
 
+    @Test
+    public void testRegistrationValidByPageObj(){
+        registrationPage.openRegistrationPage();
+        registrationPage.inputToSingIn();
+        registrationPage.inputEmailCreate("vita455.kucheruk@gmail.com");
+
+    }
+
+    @Test
+        public void testRegistrationValid() {
         //CLICK ON THE SIGN IN BUTTON
         webDriver.findElement(By.xpath("//a[@class='login']")).click();    //div[@class='header_user_info']
         logger.info("Click on the Sign in button- //a[@class='login']");
@@ -73,7 +98,7 @@ public class RegistrationTest {
         logger.info("Input city - city");
         webDriver.findElement(By.id("uniform-id_state")).click();
         logger.info("Check opening drop-down list - uniform-id_state");
-      // webDriver.findElement(By.xpath("//p[@class='required id_state select form-group']/div[@id='uniform-id_state']/[@checked]/span[@text='Alabama']")).click();
+        // webDriver.findElement(By.xpath("//p[@class='required id_state select form-group']/div[@id='uniform-id_state']/[@checked]/span[@text='Alabama']")).click();
         Select state = new Select(webDriver.findElement(By.id("id_state")));
         state.selectByVisibleText("Alabama");
         logger.info("Choose Alabama state - id_state (Alabama)");
@@ -93,6 +118,6 @@ public class RegistrationTest {
         webDriver.findElement(By.id("submitAccount")).click();
         logger.info("Finish creation account - submitAccount");
 
-        webDriver.close();
     }
 }
+
