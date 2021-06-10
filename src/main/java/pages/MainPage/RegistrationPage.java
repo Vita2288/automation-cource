@@ -30,52 +30,52 @@ public class RegistrationPage extends MainPage {
     public WebElement customerLNinput;
 
     @FindBy(id = "email")
-    private WebElement emailDisplayed;
+    public WebElement emailDisplayed;
 
     @FindBy(id = "passwd")
-    private WebElement passwordInput;
+    public WebElement passwordInput;
 
     @FindBy(id = "newsletter")
-    private WebElement checkboxNewsLetter;
+    public WebElement checkboxNewsLetter;
 
     @FindBy(id = "optin")
-    private WebElement checkboxReceiveSpecialOffers;
+    public WebElement checkboxReceiveSpecialOffers;
 
     @FindBy(xpath = "//input[@id='firstname']")
-    private WebElement checkFN;
+    public WebElement checkFN;
 
     @FindBy(xpath = "//input[@id='lastname']")
-    private WebElement checkLN;
+    public WebElement checkLN;
 
     @FindBy(id = "address1")
-    private WebElement addressInput;
+    public WebElement addressInput;
 
     @FindBy(id = "city")
-    private WebElement cityInput;
+    public WebElement cityInput;
 
     @FindBy(id = "uniform-id_state")
-    private WebElement stateWindowOpen;
+    public WebElement stateWindowOpen;
 
     @FindBy(id = "id_state")
-    private WebElement selectStateByIndex;
+    public WebElement selectStateByIndex;
 
     @FindBy(id = "postcode")
-    private WebElement postcodeInput;
+    public WebElement postcodeInput;
 
     @FindBy(id = "id_country")
-    private WebElement idCountry;
+    public WebElement idCountry;
 
     @FindBy(id = "phone_mobile")
-    private WebElement mobilePhoneInput;
+    public WebElement mobilePhoneInput;
 
     @FindBy(id = "alias")
-    private WebElement aliasBox;
+    public WebElement aliasBox;
 
     @FindBy(id = "submitAccount")
-    private WebElement submitAccount;
+    public WebElement submitAccount;
 
     @FindBy(xpath = "//div[@id='center_column']/h1")
-    private WebElement titleRegistratedAccount;
+    public WebElement titleRegistratedAccount;
 
     public RegistrationPage(WebDriver webDriver) {
         super(webDriver);
@@ -102,7 +102,7 @@ public class RegistrationPage extends MainPage {
     }
 
     /**
-     * Method click  to SignIn page
+     * Method click to SignIn page
      *
      * @param email
      */
@@ -117,4 +117,39 @@ public class RegistrationPage extends MainPage {
             Assert.fail("Can`t input email" + email);
         }
     }
+
+    /**
+     * Method submit button
+
+     */
+    public void submitButtonCreate (){
+       try {
+           submitButtonCreate.click();
+           logger.info("Click submit button");
+       } catch (Exception e){
+           logger.error("Can`t submit button");
+           Assert.fail("Can`t submit button");
+       }
+    }
+
+    public void selectState(){
+        try {
+            Select state = new Select(webDriver.findElement(By.id("id_state")));
+            state.selectByIndex(32);
+            logger.info("Find select by 32");
+        } catch (Exception e) {
+            logger.error("Can`t find select city by 32");
+        }
+    }
+
+    public void selectCountry(){
+        try {
+            Select country = new Select(webDriver.findElement(By.id("iid_country")));
+            country.selectByVisibleText("United States");
+            logger.info("Find select country United State");
+        } catch (Exception e) {
+            logger.error("Can`t find select country United State");
+        }
+    }
+
 }
