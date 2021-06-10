@@ -34,7 +34,6 @@ public class RegistrationTest {
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
-
         try {
             //MAIN PAGE
             webDriver.get("http://automationpractice.com");
@@ -56,10 +55,33 @@ public class RegistrationTest {
         registrationPage.openRegistrationPage();
         registrationPage.inputToSingIn();
         registrationPage.inputEmailCreate("vita455.kucheruk@gmail.com");
+        registrationPage.submitButtonCreate();
+                //another way
+        registrationPage.radioButton.click();
+        registrationPage.customerFNinput.sendKeys("Vita");
+        registrationPage.customerLNinput.sendKeys("Kucheruk");
+        registrationPage.emailDisplayed.getAttribute("vita455.kucheruk@gmail.com");
+        registrationPage.passwordInput.sendKeys("kkll;mkl");
+        registrationPage.checkboxNewsLetter.click();
+        registrationPage.checkboxReceiveSpecialOffers.click();
+        registrationPage.checkFN.getAttribute("Vita");
+        registrationPage.checkLN.getAttribute("Kucheruk");
+        registrationPage.addressInput.sendKeys("78 Nova, 01526, SuperCompany Co");
+        registrationPage.cityInput.sendKeys("Brovary");
+        registrationPage.stateWindowOpen.click();
+        registrationPage.selectState();
+        registrationPage.postcodeInput.sendKeys("01526");
+        registrationPage.idCountry.isDisplayed();
+        registrationPage.selectCountry();
+        registrationPage.mobilePhoneInput.sendKeys("+38 013 31 03");
+        registrationPage.aliasBox.sendKeys("vita455.kucheruk@gmail.com");
+        registrationPage.submitAccount.click();
+        registrationPage.titleRegistratedAccount.click();
+
 
     }
 
-    @Test
+    /*@Test
         public void testRegistrationValid() {
         //CLICK ON THE SIGN IN BUTTON
         webDriver.findElement(By.xpath("//a[@class='login']")).click();    //div[@class='header_user_info']
@@ -118,6 +140,6 @@ public class RegistrationTest {
         webDriver.findElement(By.id("submitAccount")).click();
         logger.info("Finish creation account - submitAccount");
 
-    }
+    }*/
 }
 
