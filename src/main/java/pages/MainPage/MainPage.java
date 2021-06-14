@@ -1,19 +1,23 @@
 package pages.MainPage;
 
 
+import libs.WebElements;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import static org.hamcrest.CoreMatchers.is;
+
 public class MainPage {
         WebDriver webDriver;
         Logger logger;
-
+        public WebElements webElements;
 
     public MainPage(WebDriver webDriver) {
         this.webDriver = webDriver;
         logger = Logger.getLogger(getClass());
+        webElements = new WebElements(webDriver);
         PageFactory.initElements(webDriver, this);
 
     }
@@ -33,4 +37,17 @@ public class MainPage {
         }
 
     }
+
+    public void checkTitle(String expectedTitle){
+        try {
+            Assert.assertThat("Title not matched", webDriver.getTitle(), is(expectedTitle));
+        } catch (Exception e){
+          logger.error("Can`t find title" + expectedTitle);
+          Assert.fail("Can`t find title" + expectedTitle);
+        }
+    }
+
+
 }
+
+

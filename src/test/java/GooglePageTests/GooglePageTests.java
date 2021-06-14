@@ -1,4 +1,4 @@
-package vkucheruk.secondLesson;
+package GooglePageTests;
 
 import org.apache.log4j.Logger;
 import org.junit.After;

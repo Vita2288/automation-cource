@@ -1,13 +1,10 @@
 package pages.MainPage;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
-
-import java.sql.Driver;
 
 public class RegistrationPage extends MainPage {
 
@@ -26,7 +23,7 @@ public class RegistrationPage extends MainPage {
     @FindBy(id = "customer_firstname")
     public WebElement customerFNinput;
 
-    @FindBy(id = "customer__lastname")
+    @FindBy(id = "customer_lastname")
     public WebElement customerLNinput;
 
     @FindBy(id = "email")
@@ -77,6 +74,22 @@ public class RegistrationPage extends MainPage {
     @FindBy(xpath = "//div[@id='center_column']/h1")
     public WebElement titleRegistratedAccount;
 
+    @FindBy(xpath = "//div[@id='center_column']/div[@class='alert alert-danger']")
+    public WebElement errorCount;
+
+    @FindBy(xpath = "//body/div[@id='page']/div[2]/div[1]/div[3]/div[1]/div[1]/ol[1]/li[1]")
+    public WebElement error1;
+
+    @FindBy(xpath = "//body/div[@id='page']/div[2]/div[1]/div[3]/div[1]/div[1]/ol[1]/li[2]")
+    public WebElement error2;
+
+    @FindBy(xpath = "//body/div[@id='page']/div[2]/div[1]/div[3]/div[1]/div[1]/ol[1]/li[3]")
+    public WebElement error3;
+
+    public String errorCountMsgTemplate = "There is %s error";
+
+    public String errorState = "This country requires you to choose a State.";
+
     public RegistrationPage(WebDriver webDriver) {
         super(webDriver);
     }
@@ -91,14 +104,7 @@ public class RegistrationPage extends MainPage {
      */
 
     public void inputToSingIn() {
-        try {
-            loginInput.click();
-            logger.info("Click to SingIn");
-        } catch (Exception e) {
-            logger.error("Can`t click to SignIn");
-            Assert.fail("Can`t click to SignIn");
-
-        }
+        webElements.clickOnElement(loginInput);
     }
 
     /**
@@ -108,28 +114,62 @@ public class RegistrationPage extends MainPage {
      */
 
     public void inputEmailCreate(String email) {
-        try {
-            emailInput.sendKeys(email);
-            logger.info("Input email" + email);
-
-        } catch (Exception e) {
-            logger.error("Can`t input email" + email);
-            Assert.fail("Can`t input email" + email);
-        }
+        webElements.inputText(emailInput, email);
     }
 
     /**
      * Method submit button
-
      */
-    public void submitButtonCreate (){
-       try {
-           submitButtonCreate.click();
-           logger.info("Click submit button");
-       } catch (Exception e){
-           logger.error("Can`t submit button");
-           Assert.fail("Can`t submit button");
-       }
+    public void submitButtonCreate() {
+        webElements.clickOnElement(submitButtonCreate);
+    }
+
+    public void clickOnRadioButton() {
+        webElements.clickOnElement(radioButton);
+    }
+
+    public void inputCustomerFirstName(String firstName) {
+        webElements.inputText(customerFNinput, firstName);
+    }
+
+    public void inputCustomerLastName(String lastName) {
+        webElements.inputText(customerLNinput, lastName);
+    }
+
+    public void emailDisplayed(String email) {
+        webElements.isElementPresent(email);
+    }
+
+    public void inputPassword(String password) {
+        webElements.inputText(passwordInput, password);
+    }
+
+    public void clickCheckboxNL() {
+        webElements.clickOnElement(checkboxNewsLetter);
+    }
+
+    public void clickCheckboxRSO() {
+        webElements.clickOnElement(checkboxReceiveSpecialOffers);
+    }
+
+    public void inputFirstName(String firstname) {
+        webElements.isElementPresent(firstname);
+    }
+
+    public void inputLastName(String lastname) {
+        webElements.isElementPresent(lastname);
+    }
+
+    public void inputAddress(String address) {
+        webElements.inputText(addressInput, address);
+    }
+
+    public void inputCity(String city) {
+        webElements.inputText(cityInput, city);
+    }
+
+    public void clickOnStateWindow (){
+        webElements.clickOnElement(stateWindowOpen);
     }
 
     public void selectState(){
@@ -142,7 +182,15 @@ public class RegistrationPage extends MainPage {
         }
     }
 
-    public void selectCountry(){
+    public void inputPostcode(String postcode){
+        webElements.inputText(postcodeInput,postcode);
+    }
+
+    public void isDisplayedTextByXpath(String text){
+        webElements.isElementPresent(text);
+    }
+
+    public void selectCountry() {
         try {
             Select country = new Select(webDriver.findElement(By.id("iid_country")));
             country.selectByVisibleText("United States");
@@ -151,5 +199,21 @@ public class RegistrationPage extends MainPage {
             logger.error("Can`t find select country United State");
         }
     }
+
+    public void inputMobile(String mobile){
+        webElements.inputText(mobilePhoneInput, mobile);
+    }
+
+    public void inputAlias (String alias){
+        webElements.inputText(aliasBox, alias);
+    }
+
+    public void clickSubmitAccountButton(){
+        webElements.clickOnElement(submitAccount);
+    }
+
+
+
+
 
 }
