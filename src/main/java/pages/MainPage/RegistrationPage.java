@@ -8,6 +8,12 @@ import org.openqa.selenium.support.ui.Select;
 
 public class RegistrationPage extends MainPage {
 
+    public static final String ERROR_STATE = "This country requires you to choose a State.";
+    public static final String ERROR_PASSWORD_MISSING = "passwd is required.";
+
+    public static String errorCountMsgTemplate = "There is %s error";
+
+
     @FindBy(xpath = "//a[@class='login']")
     public WebElement loginInput;
 
@@ -75,28 +81,19 @@ public class RegistrationPage extends MainPage {
     public WebElement titleRegistratedAccount;
 
     @FindBy(xpath = "//div[@id='center_column']/div[@class='alert alert-danger']")
-    public WebElement errorCount;
+    public WebElement errorMassage;
 
-    @FindBy(xpath = "//body/div[@id='page']/div[2]/div[1]/div[3]/div[1]/div[1]/ol[1]/li[1]")
-    public WebElement error1;
-
-    @FindBy(xpath = "//body/div[@id='page']/div[2]/div[1]/div[3]/div[1]/div[1]/ol[1]/li[2]")
-    public WebElement error2;
-
-    @FindBy(xpath = "//body/div[@id='page']/div[2]/div[1]/div[3]/div[1]/div[1]/ol[1]/li[3]")
-    public WebElement error3;
-
-    public String errorCountMsgTemplate = "There is %s error";
-
-    public String errorState = "This country requires you to choose a State.";
+    //Constructor
 
     public RegistrationPage(WebDriver webDriver) {
         super(webDriver);
     }
 
+
+    //METODS to work with locators
+
     public void openRegistrationPage() {
         openUrl("http://automationpractice.com/index.php?controller=authentication&back=my-account");
-
     }
 
     /**
@@ -212,8 +209,66 @@ public class RegistrationPage extends MainPage {
         webElements.clickOnElement(submitAccount);
     }
 
+    public String[] getErrorBlock() {
+/*        if (errorMassage == null) {
+            return null;
+        } else {
+            return errorMassage.getText().split("\n");
+        }*/
+        return (errorMassage == null)
+                ? null
+                : errorMassage.getText().split("\n");
+    }
+
+    public String getErrorCountString() {
+        String[] errorMassageArray = getErrorBlock();
+        if (errorMassageArray == null) {
+            logger.warn("Error block is null!");
+            return null;
+        } else {
+            return String.format(errorCountMsgTemplate, errorMassageArray.length - 1);
+        }
+    }
+
+    public boolean isContainError(String error) {
+        boolean isContains = false;
+
+        String[] errorMassageArray = getErrorBlock();
+        if (errorMassageArray == null) {
+            logger.warn("Error block is null!");
+            return false;
+        } else {
+            for (int i = 1; i < errorMassageArray.length; i++) {
+                if (errorMassageArray[i].equals(error)) {
+                    isContains = true;
+                    break;
+                }
+            }
+        }
+        return isContains;
+    }
+
+  /*  public void checkErrorMassageValue(String errorMsg) {
+        String[] errorMassageArray = getErrorBlock();
+
+        if (errorMassageArray == null) {
+            logger.warn("Error block is null!");
+        } else {
+            String expectedErrorCountString = String.format(errorCountMsgTemplate, errorMassageArray.length-1);
+            Assert.assertEquals(expectedErrorCountString, errorMassageArray[0]);
 
 
+            boolean isContains = false;
+            for(int i = 1; i < errorMassageArray.length; i++) {
+                if (errorMassageArray[i].equals(errorMsg)) {
+                    isContains = true;
+                    break;
+                }
+            }
+
+            Assert.assertTrue(isContains);
+        }
+    }*/
 
 
 }

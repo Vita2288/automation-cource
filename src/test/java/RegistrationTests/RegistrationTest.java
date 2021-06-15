@@ -3,6 +3,7 @@ package RegistrationTests;
 import MainTests.MainTest;
 import org.junit.Assert;
 import org.junit.Test;
+import pages.MainPage.RegistrationPage;
 
 import java.util.UUID;
 
@@ -42,14 +43,11 @@ public class RegistrationTest extends MainTest {
         registrationPage.clickSubmitAccountButton();
         checkAC("My account", registrationPage.titleRegistratedAccount.isDisplayed(), true);
 
-        String []  errorMassage = registrationPage.errorCount.getText().split("\n");
+        String actualErrorCountStr = registrationPage.getErrorCountString();
+        Assert.assertEquals("Error count message is not equals", String.format(RegistrationPage.errorCountMsgTemplate, 1), actualErrorCountStr);
 
-        String expectedErrorCount = String.format(registrationPage.errorCountMsgTemplate, errorMassage.length-1);
-
-        Assert.assertEquals(expectedErrorCount, errorMassage[0]);
-        Assert.assertEquals(registrationPage.errorState, errorMassage[1]);
-
-       // checkAC("The text is present", registrationPage.titleRegistratedAccount.isDisplayed(),true);
+        boolean isContain = registrationPage.isContainError(RegistrationPage.ERROR_STATE);
+        Assert.assertTrue("Expected error is not present", isContain);
     }
 }
 
