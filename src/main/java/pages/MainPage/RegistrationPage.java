@@ -1,10 +1,8 @@
 package pages.MainPage;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
 
 public class RegistrationPage extends MainPage {
 
@@ -23,7 +21,7 @@ public class RegistrationPage extends MainPage {
     @FindBy(id = "SubmitCreate")
     public WebElement submitButtonCreate;
 
-    @FindBy(xpath = "//form[@id='account-creation_form']/div[@class='account_creation']/div[@class='clearfix']/div[2]")
+    @FindBy(xpath = "//form[@id='account-creation_form']/div[@class='account_creation']/div[@class='clearfix']/div[@class='radio-inline']/label[@for='id_gender2']/div[@id=uniform-id_gender2]")
     public WebElement radioButton;
 
     @FindBy(id = "customer_firstname")
@@ -169,14 +167,8 @@ public class RegistrationPage extends MainPage {
         webElements.clickOnElement(stateWindowOpen);
     }
 
-    public void selectState(){
-        try {
-            Select state = new Select(webDriver.findElement(By.id("id_state")));
-            state.selectByIndex(32);
-            logger.info("Find select by 32");
-        } catch (Exception e) {
-            logger.error("Can`t find select city by 32");
-        }
+    public void selectState(String text){
+        webElements.selectTextInDropDownByText(selectStateByIndex, text);
     }
 
     public void inputPostcode(String postcode){
@@ -187,14 +179,8 @@ public class RegistrationPage extends MainPage {
         webElements.isElementPresent(text);
     }
 
-    public void selectCountry() {
-        try {
-            Select country = new Select(webDriver.findElement(By.id("iid_country")));
-            country.selectByVisibleText("United States");
-            logger.info("Find select country United State");
-        } catch (Exception e) {
-            logger.error("Can`t find select country United State");
-        }
+    public void selectCountry(String text) {
+        webElements.selectTextInDropDownByText(idCountry, text);
     }
 
     public void inputMobile(String mobile){

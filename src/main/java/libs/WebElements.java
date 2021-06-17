@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 public class WebElements {
 
@@ -41,6 +42,23 @@ public class WebElements {
            logger.error("Can`t click on element" + element);
            Assert.fail("Can`t click on element" + element);
        }
+    }
+
+    /**
+     * Method check select text in dropdown
+     * @param dropDown
+     * @param text
+     */
+    public void selectTextInDropDownByText(WebElement dropDown, String text){
+        try{
+            Select optionFromDropDown = new Select(dropDown);
+            optionFromDropDown.selectByVisibleText(text);
+    //      optionFromDropDown.deselectByValue(text);
+            logger.info("was selected DropDown by text");
+        }catch (Exception e){
+            logger.error("Can`t work with DropDown");
+            Assert.fail("Can`t work with DropDown");
+        }
     }
 
     public boolean isElementPresent(String xPathLocator) {

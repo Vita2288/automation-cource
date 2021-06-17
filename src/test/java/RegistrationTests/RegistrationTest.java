@@ -9,13 +9,15 @@ import java.util.UUID;
 
 public class RegistrationTest extends MainTest {
 
+    public RegistrationTest(String browser){
+        super(browser);
+    }
 
     @Test
     public void testRegistrationValidByPageObjWithoutStateValue(){
         registrationPage.openRegistrationPage();
         registrationPage.checkTitle("Login - My Store");
         registrationPage.inputToSingIn();
-        registrationPage.checkTitle("Login - My Store");
 
         var email = "vita" + UUID.randomUUID() +".kucheruk@gmail.com";
         registrationPage.inputEmailCreate(email);
@@ -25,7 +27,7 @@ public class RegistrationTest extends MainTest {
         registrationPage.clickOnRadioButton();
         registrationPage.inputCustomerFirstName("Vita");
         registrationPage.inputCustomerLastName("Kucheruk");
-        registrationPage.emailDisplayed("vita451444241.kucheruk@gmail.com");
+        registrationPage.emailDisplayed("vita.kucheruk@gmail.com");
         registrationPage.inputPassword("kkll;mkl");
         registrationPage.clickCheckboxNL();
         registrationPage.clickCheckboxRSO();
@@ -34,10 +36,10 @@ public class RegistrationTest extends MainTest {
         registrationPage.inputAddress("78 Nova, 01526, SuperCompany Co");
         registrationPage.inputCity("Brovary");
         registrationPage.clickOnStateWindow();
-   //     registrationPage.selectState();
+        registrationPage.selectState("New York");
         registrationPage.inputPostcode("01526");
-        registrationPage.isDisplayedTextByXpath("-");
-        registrationPage.selectCountry();
+        registrationPage.selectCountry("United State");
+        registrationPage.isDisplayedTextByXpath("United State");
         registrationPage.inputMobile("+38 013 31 03");
         registrationPage.inputAlias("vita455.kucheruk@gmail.com");
         registrationPage.clickSubmitAccountButton();
