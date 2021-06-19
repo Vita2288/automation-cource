@@ -1,7 +1,7 @@
-package pages.MainPage;
+package Automationpractice.pages.MainPage;
 
 
-import libs.WebElements;
+import Automationpractice.libs.WebElements;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;

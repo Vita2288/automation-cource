@@ -1,4 +1,4 @@
-package pages.MainPage;
+package Automationpractice.pages.MainPage;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,7 +21,7 @@ public class RegistrationPage extends MainPage {
     @FindBy(id = "SubmitCreate")
     public WebElement submitButtonCreate;
 
-    @FindBy(xpath = "//form[@id='account-creation_form']/div[@class='account_creation']/div[@class='clearfix']/div[@class='radio-inline']/label[@for='id_gender2']/div[@id=uniform-id_gender2]")
+    @FindBy(xpath = "//div[@id='uniform-id_gender2']")
     public WebElement radioButton;
 
     @FindBy(id = "customer_firstname")

@@ -1,4 +1,4 @@
-package libs;
+package Automationpractice.libs;
 
 import org.apache.log4j.Logger;
 import org.hamcrest.CoreMatchers;
