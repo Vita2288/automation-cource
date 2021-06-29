@@ -1,6 +1,6 @@
 package AutomationPracticeTests.MainTest;
 
-import Automationpractice.pages.MainPage.RegistrationPage;
+import Automationpractice.pages.MainPage.CustomerServicePage;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 public class MainTestNG {
 
     public WebDriver webDriver;
-    public RegistrationPage registrationPage;
+    public CustomerServicePage customerServicePage;
     public Logger logger;
 
 
@@ -32,7 +32,7 @@ public class MainTestNG {
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
-        registrationPage = new RegistrationPage(webDriver);
+        customerServicePage = new CustomerServicePage(webDriver);
         logger = Logger.getLogger(getClass());
 
         try {
@@ -54,6 +54,3 @@ public class MainTestNG {
 
 }
 
-//        public void checkAC(String message, boolean actualRes, boolean expectedRes){
-//            Assert.assertEquals(message, actualRes, expectedRes);
-//        }
