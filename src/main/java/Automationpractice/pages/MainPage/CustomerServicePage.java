@@ -27,7 +27,7 @@ public class CustomerServicePage extends MainPage {
     @FindBy (xpath = "//textarea[@id='message']")
     public WebElement message;
 
-    @FindBy(id = "SubmitCreate")
+    @FindBy(id = "submitMessage")
     public WebElement sendButton;
 
     //Constructor
